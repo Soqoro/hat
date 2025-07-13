@@ -6,10 +6,11 @@ A short version of the paper has been accepted for Oral presentation at the [ICM
 
 
 ## Setup
+This repository is updated to work with the latest versions of PyTorch (2.7.1) and torchvision. Package dependencies issues and compatibility issues are fixed.
 
 ### Requirements
 
-Our code has been implemented and tested with `Python 3.8.5` and `PyTorch 1.8.0`.  To install the required packages:
+Our code has been implemented and tested with `Python 3.11.13` and `PyTorch 2.7.1`.  To install the required packages:
 ```bash
 $ pip install -r requirements.txt
 ```

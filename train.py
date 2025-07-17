@@ -132,7 +132,7 @@ for epoch in range(1, NUM_STD_EPOCHS+1):
         test_adv_acc = trainer.eval(test_dataloader, adversarial=True)
         logger.log('Adversarial Accuracy-\tTest: {:.2f}%.'.format(test_adv_acc*100))
         epoch_metrics.update({'test_adversarial_acc': test_adv_acc})
-    metrics = metrics.append(pd.DataFrame(epoch_metrics, index=[0]), ignore_index=True)
+    metrics = pd.concat([metrics, pd.DataFrame(epoch_metrics, index=[0])], ignore_index=True)
         
 if NUM_STD_EPOCHS > 0:
     trainer.load_model(WEIGHTS)
@@ -199,7 +199,7 @@ for epoch in range(1, NUM_ADV_EPOCHS+1):
     trainer.save_model(os.path.join(LOG_DIR, 'weights-last.pt'))
 
     logger.log('Time taken: {}'.format(format_time(time.time()-start)))
-    metrics = metrics.append(pd.DataFrame(epoch_metrics, index=[0]), ignore_index=True)
+    metrics = pd.concat([metrics, pd.DataFrame(epoch_metrics, index=[0])], ignore_index=True)
     metrics.to_csv(os.path.join(LOG_DIR, 'stats_adv.csv'), index=False)
 
     
